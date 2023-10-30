@@ -141,13 +141,13 @@ tasks.getByName<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("sha
         )
 
         System.getenv("GITHUB_SHA")?.also {
-            attributes("GitHub-SHA" to it)
+            // attributes("GitHub-SHA" to it)
         }
     }
 
     doLast {
-        attachSignature(jarPath)
-        createChecksum(jarPath)
+        // attachSignature(jarPath)
+        // createChecksum(jarPath)
     }
 }
 
@@ -159,7 +159,7 @@ fun createExecutable(suffix: String, header: String) {
         it.write(jarPath.readBytes())
     }
 
-    createChecksum(output)
+    // createChecksum(output)
 }
 
 tasks.processResources {
@@ -196,7 +196,7 @@ val makeExecutables = tasks.create("makeExecutables") {
     dependsOn(tasks.jar)
     doLast {
         createExecutable("exe", "src/main/resources/assets/HMCLauncher.exe")
-        createExecutable("sh", "src/main/resources/assets/HMCLauncher.sh")
+        // createExecutable("sh", "src/main/resources/assets/HMCLauncher.sh")
     }
 }
 
