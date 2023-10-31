@@ -28,7 +28,7 @@ public class HMCLAddon {
     private static String NIDE8_AUTH_BASEURL = "https://auth.mc-user.com:233/";
     private static String NIDE8_SERVER_URL = "https://login.mc-user.com:233/{serverId}/";
     private static String NIDE8_REGISTER_URL = "https://login.mc-user.com:233/{serverId}/loginreg";
-    private static String NIDE8_SERVER_JAR_URL = NIDE8_SERVER_URL + "index/jar";
+    private static String NIDE8_SERVER_JAR_URL = "https://login.mc-user.com:233/index/jar";
 
     static {
         SHOW_CUSTOM_ANNOUNCEMNTS = true;
@@ -105,7 +105,6 @@ public class HMCLAddon {
     public static Map<String, String> getNide8Links(String url) {
         String serverId = getNide8ServerId(url);
         Map<String, String> links = new HashMap<>();
-        links.put("auth", NIDE8_AUTH_URL.replaceAll("\\{serverId}", serverId));
         links.put("homepage", NIDE8_SERVER_URL.replaceAll("\\{serverId}", serverId));
         links.put("register", NIDE8_REGISTER_URL.replaceAll("\\{serverId}", serverId));
         return links;
