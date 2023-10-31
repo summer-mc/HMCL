@@ -22,7 +22,6 @@ import com.google.gson.reflect.TypeToken;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.task.Schedulers;
 import org.jackhuang.hmcl.task.Task;
 import org.jackhuang.hmcl.ui.FXUtils;
@@ -30,7 +29,7 @@ import org.jackhuang.hmcl.ui.construct.ComponentList;
 import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
 import org.jackhuang.hmcl.ui.construct.SpinnerPane;
 import org.jackhuang.hmcl.util.io.HttpRequest;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.util.Collections;
 import java.util.List;

@@ -26,6 +26,8 @@ import org.jackhuang.hmcl.game.Arguments;
 import org.jackhuang.hmcl.game.LaunchOptions;
 import org.jackhuang.hmcl.util.ToStringBuilder;
 import org.jackhuang.hmcl.util.function.ExceptionalSupplier;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -129,7 +131,7 @@ public class AuthlibInjectorAccount extends YggdrasilAccount {
 
         @Override
         public Arguments getLaunchArguments(LaunchOptions options) {
-            return new Arguments().addJVMArguments(
+            return HMCLAddon.isNide8AuthServer(server.getUrl()) ? HMCLAddon.getNide8AuthArgs(server.getUrl()) : new Arguments().addJVMArguments(
                     "-javaagent:" + artifact.getLocation().toString() + "=" + server.getUrl(),
                     "-Dauthlibinjector.side=client",
                     "-Dauthlibinjector.yggdrasil.prefetched=" + Base64.getEncoder().encodeToString(prefetchedMeta.getBytes(UTF_8)));

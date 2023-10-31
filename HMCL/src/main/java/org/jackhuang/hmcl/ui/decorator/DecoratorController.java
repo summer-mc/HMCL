@@ -48,7 +48,7 @@ import org.jackhuang.hmcl.ui.construct.StackContainerPane;
 import org.jackhuang.hmcl.ui.wizard.Refreshable;
 import org.jackhuang.hmcl.ui.wizard.WizardProvider;
 import org.jackhuang.hmcl.util.io.NetworkUtils;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -190,7 +190,7 @@ public class DecoratorController {
      * Load background image from bg/, background.png, background.jpg, background.gif
      */
     private Image loadDefaultBackgroundImage() {
-        Optional<Image> image = HMCLAddon.CUSTOM_BG_IMAGE;
+        Optional<Image> image = Optional.ofNullable(HMCLAddon.CUSTOM_BG_IMAGE);
         if (!image.isPresent()) {
             randomImageIn(Paths.get("bg"));
         }

@@ -45,7 +45,7 @@ import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
 import org.jackhuang.hmcl.ui.animation.TransitionPane;
 import org.jackhuang.hmcl.ui.wizard.Navigation;
 import org.jackhuang.hmcl.util.Lang;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 public class DecoratorSkin extends SkinBase<Decorator> {
     private static final PseudoClass TRANSPARENT = PseudoClass.getPseudoClass("transparent");

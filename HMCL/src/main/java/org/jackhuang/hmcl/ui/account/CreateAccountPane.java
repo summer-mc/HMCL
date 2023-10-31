@@ -63,7 +63,7 @@ import org.jackhuang.hmcl.util.StringUtils;
 import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
 import org.jackhuang.hmcl.util.javafx.BindingMapping;
 import org.jetbrains.annotations.Nullable;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -455,7 +455,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                 add(lblServers, 0, rowIndex);
 
                 cboServers = new JFXComboBox<>();
-                cboServers.setCellFactory(jfxListCellFactory(server -> new TwoLineListItem(server.getName(), server.getUrl())));
+                cboServers.setCellFactory(jfxListCellFactory(server -> new TwoLineListItem(server.getName(), "")));
                 cboServers.setConverter(stringConverter(AuthlibInjectorServer::getName));
                 bindContent(cboServers.getItems(), config().getAuthlibInjectorServers());
                 cboServers.getItems().addListener(onInvalidating(
@@ -474,7 +474,12 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                 linksContainer.setAlignment(Pos.CENTER);
                 onChangeAndOperate(cboServers.valueProperty(), server -> {
                     this.server = server;
-                    linksContainer.getChildren().setAll(createHyperlinks(server));
+
+                    if (HMCLAddon.isNide8AuthServer(server.getUrl())) {
+                        
+                    } else {
+                        linksContainer.getChildren().setAll(createHyperlinks(server));
+                    }
                 });
                 linksContainer.setMinWidth(USE_PREF_SIZE);
 

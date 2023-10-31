@@ -26,9 +26,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.upgrade.UpdateChecker;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import static org.jackhuang.hmcl.ui.FXUtils.newImage;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;

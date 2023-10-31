@@ -42,6 +42,7 @@ import org.jackhuang.hmcl.util.io.JarUtils;
 import org.jackhuang.hmcl.util.platform.Architecture;
 import org.jackhuang.hmcl.util.platform.CommandBuilder;
 import org.jackhuang.hmcl.util.platform.OperatingSystem;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.io.File;
 import java.io.IOException;
@@ -146,6 +147,8 @@ public final class Launcher extends Application {
             if (Metadata.HMCL_DIRECTORY.toString().indexOf('=') >= 0) {
                 Main.showWarningAndContinue(i18n("fatal.illegal_char"));
             }
+
+            HMCLAddon.onlineInit();
 
             // runLater to ensure ConfigHolder.init() finished initialization
             Platform.runLater(() -> {

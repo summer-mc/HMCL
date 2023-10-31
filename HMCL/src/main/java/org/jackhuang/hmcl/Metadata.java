@@ -17,13 +17,11 @@
  */
 package org.jackhuang.hmcl;
 
-import org.jackhuang.hmcl.util.StringUtils;
 import org.jackhuang.hmcl.util.io.JarUtils;
 import org.jackhuang.hmcl.util.platform.OperatingSystem;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Stores metadata about this application.

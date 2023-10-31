@@ -60,7 +60,7 @@ import org.jackhuang.hmcl.upgrade.UpdateHandler;
 import org.jackhuang.hmcl.util.javafx.BindingMapping;
 import org.jackhuang.hmcl.util.javafx.MappedObservableList;
 import org.jackhuang.hmcl.util.platform.JavaVersion;
-import summerworks.launcher.hmcl.HMCLAddon;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -118,7 +118,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
         setPadding(new Insets(20));
 
         if (HMCLAddon.SHOW_CUSTOM_ANNOUNCEMNTS) {
-            HMCLAddon.onlineInit();
             announcementPane = new VBox(16);
             announcementPane.getChildren().add(new AnnouncementCard(HMCLAddon.CUSTOM_ANNOUNCEMENTS_TITLE, HMCLAddon.CUSTOM_ANNOUNCEMENTS_TEXT));
             getChildren().add(announcementPane);

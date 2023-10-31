@@ -45,6 +45,7 @@ import org.jackhuang.hmcl.upgrade.UpdateChecker;
 import org.jackhuang.hmcl.util.TaskCancellationAction;
 import org.jackhuang.hmcl.util.io.CompressingUtils;
 import org.jackhuang.hmcl.util.versioning.VersionNumber;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 import java.io.File;
 import java.util.Comparator;
