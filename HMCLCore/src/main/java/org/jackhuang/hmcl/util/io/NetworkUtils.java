@@ -95,7 +95,9 @@ public final class NetworkUtils {
     }
 
     public static HttpURLConnection createHttpConnection(URL url) throws IOException {
-        return (HttpURLConnection) createConnection(url);
+        HttpURLConnection conn = (HttpURLConnection) createConnection(url);
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 SummerMCLauncher/1.0"); // Fuck you nide8 auth API UA detector!
+        return conn;
     }
 
     /**
