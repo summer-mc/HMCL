@@ -28,6 +28,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.upgrade.UpdateChecker;
+import summerworks.launcher.hmcl.HMCLAddon;
 
 import static org.jackhuang.hmcl.ui.FXUtils.newImage;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
@@ -51,7 +52,7 @@ public class CrashWindow extends Stage {
 
         Button btnContact = new Button();
         btnContact.setText(i18n("launcher.contact"));
-        btnContact.setOnMouseClicked(event -> FXUtils.openLink(Metadata.CONTACT_URL));
+        btnContact.setOnMouseClicked(event -> FXUtils.openLink(HMCLAddon.CUSTOM_HELP_LINK));
         HBox box = new HBox();
         box.setStyle("-fx-padding: 8px;");
         box.getChildren().add(btnContact);

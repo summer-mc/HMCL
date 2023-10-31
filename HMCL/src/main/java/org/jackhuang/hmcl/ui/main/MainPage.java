@@ -109,7 +109,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
             titleIcon.setImage(new Image("/assets/img/icon.png", 20, 20, false, false));
         }
 
-        Label titleLabel = new Label(Metadata.FULL_TITLE);
+        Label titleLabel = new Label(Metadata.FULL_NAME);
         titleLabel.getStyleClass().add("jfx-decorator-title");
         titleNode.getChildren().setAll(titleIcon, titleLabel);
 
@@ -118,6 +118,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
         setPadding(new Insets(20));
 
         if (HMCLAddon.SHOW_CUSTOM_ANNOUNCEMNTS) {
+            HMCLAddon.onlineInit();
             announcementPane = new VBox(16);
             announcementPane.getChildren().add(new AnnouncementCard(HMCLAddon.CUSTOM_ANNOUNCEMENTS_TITLE, HMCLAddon.CUSTOM_ANNOUNCEMENTS_TEXT));
             getChildren().add(announcementPane);
@@ -239,7 +240,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
             launchPane.getChildren().setAll(launchButton, separator, menuButton);
         }
 
-        getChildren().addAll(updatePane, launchPane);
+        getChildren().addAll(/*updatePane, */launchPane);
 
         menu.setMaxHeight(365);
         menu.setMaxWidth(545);

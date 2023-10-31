@@ -105,7 +105,7 @@ public class AccountListPage extends DecoratorAnimatedPage implements DecoratorP
                     offlineItem.setTitle(i18n("account.methods.offline"));
                     offlineItem.setLeftGraphic(wrap(SVG.ACCOUNT));
                     offlineItem.setOnAction(e -> Controllers.dialog(new CreateAccountPane(Accounts.FACTORY_OFFLINE)));
-                    boxMethods.getChildren().add(offlineItem);
+                    // boxMethods.getChildren().add(offlineItem);
 
                     AdvancedListItem mojangItem = new AdvancedListItem();
                     mojangItem.getStyleClass().add("navigation-drawer-item");
@@ -113,7 +113,7 @@ public class AccountListPage extends DecoratorAnimatedPage implements DecoratorP
                     mojangItem.setTitle(i18n("account.methods.yggdrasil"));
                     mojangItem.setLeftGraphic(wrap(SVG.MOJANG));
                     mojangItem.setOnAction(e -> Controllers.dialog(new CreateAccountPane(Accounts.FACTORY_MOJANG)));
-                    boxMethods.getChildren().add(mojangItem);
+                    // boxMethods.getChildren().add(mojangItem);
 
                     AdvancedListItem microsoftItem = new AdvancedListItem();
                     microsoftItem.getStyleClass().add("navigation-drawer-item");
@@ -121,7 +121,7 @@ public class AccountListPage extends DecoratorAnimatedPage implements DecoratorP
                     microsoftItem.setTitle(i18n("account.methods.microsoft"));
                     microsoftItem.setLeftGraphic(wrap(SVG.MICROSOFT));
                     microsoftItem.setOnAction(e -> Controllers.dialog(new CreateAccountPane(Accounts.FACTORY_MICROSOFT)));
-                    boxMethods.getChildren().add(microsoftItem);
+                    // boxMethods.getChildren().add(microsoftItem);
 
                     VBox boxAuthServers = new VBox();
                     authServerItems = MappedObservableList.create(skinnable.authServersProperty(), server -> {
@@ -137,7 +137,7 @@ public class AccountListPage extends DecoratorAnimatedPage implements DecoratorP
                         });
                         btnRemove.getStyleClass().add("toggle-icon4");
                         btnRemove.setGraphic(SVG.CLOSE.createIcon(Theme.blackFill(), 14, 14));
-                        item.setRightGraphic(btnRemove);
+                        // item.setRightGraphic(btnRemove);
 
                         ObservableValue<String> title = BindingMapping.of(server, AuthlibInjectorServer::getName);
                         item.titleProperty().bind(title);
@@ -171,7 +171,7 @@ public class AccountListPage extends DecoratorAnimatedPage implements DecoratorP
 
                 ScrollPane scrollPane = new ScrollPane(boxMethods);
                 VBox.setVgrow(scrollPane, Priority.ALWAYS);
-                setLeft(scrollPane, addAuthServerItem);
+                setLeft(scrollPane/*, addAuthServerItem*/);
             }
 
             ScrollPane scrollPane = new ScrollPane();

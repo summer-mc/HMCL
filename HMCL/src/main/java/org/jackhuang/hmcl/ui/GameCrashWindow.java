@@ -51,6 +51,7 @@ import org.jackhuang.hmcl.util.platform.Architecture;
 import org.jackhuang.hmcl.util.platform.CommandBuilder;
 import org.jackhuang.hmcl.util.platform.ManagedProcess;
 import org.jackhuang.hmcl.util.platform.OperatingSystem;
+import summerworks.launcher.hmcl.HMCLAddon;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -426,7 +427,7 @@ public class GameCrashWindow extends Stage {
                 logButton.setOnMouseClicked(e -> showLogWindow());
 
                 JFXButton helpButton = FXUtils.newRaisedButton(i18n("help"));
-                helpButton.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/help.html"));
+                helpButton.setOnAction(e -> FXUtils.openLink(HMCLAddon.CUSTOM_HELP_LINK));
                 runInFX(() -> FXUtils.installFastTooltip(helpButton, i18n("logwindow.help")));
 
 

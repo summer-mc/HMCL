@@ -120,7 +120,7 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
         if (globalSetting) {
             HintPane skinHint = new HintPane(MessageDialogPane.MessageType.INFO);
             skinHint.setText(i18n("settings.skin"));
-            rootPane.getChildren().add(skinHint);
+            // rootPane.getChildren().add(skinHint);
 
             HintPane specificSettingsHint = new HintPane(MessageDialogPane.MessageType.WARNING);
             Text text = new Text();
@@ -140,10 +140,10 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
         } else {
             HintPane gameDirHint = new HintPane(MessageDialogPane.MessageType.INFO);
             gameDirHint.setText(i18n("settings.game.working_directory.hint"));
-            rootPane.getChildren().add(gameDirHint);
+            // rootPane.getChildren().add(gameDirHint);
 
             ComponentList iconPickerItemWrapper = new ComponentList();
-            rootPane.getChildren().add(iconPickerItemWrapper);
+            // rootPane.getChildren().add(iconPickerItemWrapper);
 
             iconPickerItem = new ImagePickerItem();
             iconPickerItem.setImage(new Image("/assets/img/icon.png"));
@@ -402,14 +402,14 @@ public final class VersionSettingsPage extends StackPane implements DecoratorPag
 
             componentList.getContent().setAll(
                     javaSublist,
-                    gameDirSublist,
+                    //gameDirSublist,
                     maxMemoryPane,
                     launcherVisibilityPane,
                     dimensionPane,
                     showLogsPane,
-                    processPriorityPane,
-                    serverPane,
-                    showAdvancedSettingPane
+                    processPriorityPane//,
+                    //serverPane,
+                    //showAdvancedSettingPane
             );
         }
 

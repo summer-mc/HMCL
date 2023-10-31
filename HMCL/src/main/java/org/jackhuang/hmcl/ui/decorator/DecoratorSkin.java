@@ -45,6 +45,7 @@ import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
 import org.jackhuang.hmcl.ui.animation.TransitionPane;
 import org.jackhuang.hmcl.ui.wizard.Navigation;
 import org.jackhuang.hmcl.util.Lang;
+import summerworks.launcher.hmcl.HMCLAddon;
 
 public class DecoratorSkin extends SkinBase<Decorator> {
     private static final PseudoClass TRANSPARENT = PseudoClass.getPseudoClass("transparent");
@@ -197,7 +198,7 @@ public class DecoratorSkin extends SkinBase<Decorator> {
                 JFXButton btnHelp = new JFXButton();
                 btnHelp.setGraphic(SVG.HELP_CIRCLE_OUTLINE.createIcon(Theme.foregroundFillBinding(), -1, -1));
                 btnHelp.getStyleClass().add("jfx-decorator-button");
-                btnHelp.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/help.html"));
+                btnHelp.setOnAction(e -> FXUtils.openLink(HMCLAddon.CUSTOM_HELP_LINK));
 
                 JFXButton btnMin = new JFXButton();
                 StackPane pane = new StackPane(minus);
@@ -211,7 +212,7 @@ public class DecoratorSkin extends SkinBase<Decorator> {
                 btnClose.getStyleClass().add("jfx-decorator-button");
                 btnClose.setOnAction(e -> skinnable.close());
 
-                buttonsContainer.getChildren().setAll(btnHelp, btnMin, btnClose);
+                buttonsContainer.getChildren().setAll(/*btnHelp, */btnMin, btnClose);
             }
             AnchorPane layer = new AnchorPane();
             layer.setPickOnBounds(false);

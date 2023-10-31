@@ -108,7 +108,7 @@ public final class IntegrityChecker {
         }
     }
 
-    private static volatile Boolean selfVerified = null;
+    private static volatile Boolean selfVerified = false;
 
     /**
      * Checks whether the current application is verified.

@@ -30,6 +30,7 @@ import org.jackhuang.hmcl.ui.construct.ComponentList;
 import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
 import org.jackhuang.hmcl.ui.construct.SpinnerPane;
 import org.jackhuang.hmcl.util.io.HttpRequest;
+import summerworks.launcher.hmcl.HMCLAddon;
 
 import java.util.Collections;
 import java.util.List;
@@ -53,7 +54,7 @@ public class HelpPage extends SpinnerPane {
         IconedTwoLineListItem docPane = new IconedTwoLineListItem();
         docPane.setTitle(i18n("help.doc"));
         docPane.setSubtitle(i18n("help.detail"));
-        docPane.setExternalLink(Metadata.HELP_URL);
+        docPane.setExternalLink(HMCLAddon.CUSTOM_HELP_LINK);
         ComponentList doc = new ComponentList();
         doc.getContent().setAll(docPane);
         content.getChildren().add(doc);

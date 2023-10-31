@@ -271,9 +271,9 @@ public class VersionPage extends DecoratorAnimatedPage implements DecoratorPage 
 
                 AdvancedListBox sideBar = new AdvancedListBox()
                         .add(versionSettingsItem)
-                        .add(modListItem)
-                        .add(installerListItem)
-                        .add(worldListItem);
+                        //.add(modListItem)
+                        //.add(installerListItem)
+                        ; //.add(worldListItem);
                 VBox.setVgrow(sideBar, Priority.ALWAYS);
 
                 PopupMenu browseList = new PopupMenu();
@@ -331,7 +331,7 @@ public class VersionPage extends DecoratorAnimatedPage implements DecoratorPage 
                 toolbar.getStyleClass().add("advanced-list-box-clear-padding");
                 FXUtils.setLimitHeight(toolbar, 40 * 4 + 12 * 2);
 
-                setLeft(sideBar, toolbar);
+                setLeft(sideBar/*, toolbar*/);
             }
 
             control.state.bind(Bindings.createObjectBinding(() ->

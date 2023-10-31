@@ -205,7 +205,7 @@ public final class Controllers {
         scene.getStylesheets().setAll(Theme.getTheme().getStylesheets(config().getLauncherFontFamily()));
 
         stage.getIcons().add(newImage("/assets/img/icon.png"));
-        stage.setTitle(Metadata.FULL_TITLE);
+        stage.setTitle(Metadata.FULL_NAME);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
 
@@ -227,7 +227,7 @@ public final class Controllers {
         }
 
 
-        if (globalConfig().getAgreementVersion() < 1) {
+        if (globalConfig().getAgreementVersion() < 0) {
             JFXDialogLayout agreementPane = new JFXDialogLayout();
             agreementPane.setHeading(new Label(i18n("launcher.agreement")));
             agreementPane.setBody(new Label(i18n("launcher.agreement.hint")));

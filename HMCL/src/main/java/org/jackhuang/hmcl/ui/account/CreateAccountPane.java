@@ -63,6 +63,7 @@ import org.jackhuang.hmcl.util.StringUtils;
 import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
 import org.jackhuang.hmcl.util.javafx.BindingMapping;
 import org.jetbrains.annotations.Nullable;
+import summerworks.launcher.hmcl.HMCLAddon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,8 +107,8 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
 
     public CreateAccountPane(AccountFactory<?> factory) {
         if (factory == null) {
-            showMethodSwitcher = true;
-            String preferred = config().getPreferredLoginType();
+            showMethodSwitcher = false;
+            String preferred = Accounts.getLoginType(Accounts.FACTORY_AUTHLIB_INJECTOR);
             try {
                 factory = Accounts.getAccountFactory(preferred);
             } catch (IllegalArgumentException e) {
@@ -323,7 +324,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                 box.getChildren().setAll(profileLink, birthLink, purchaseLink, deauthorizeLink, forgotpasswordLink, createProfileLink);
                 GridPane.setColumnSpan(box, 2);
 
-                if (!IntegrityChecker.isOfficial()) {
+                if (!IntegrityChecker.isOfficial() && HMCLAddon.SHOW_ACCOUNT_WARNING) {
                     HintPane unofficialHint = new HintPane(MessageDialogPane.MessageType.WARNING);
                     unofficialHint.setText(i18n("unofficial.hint"));
                     vbox.getChildren().add(unofficialHint);
@@ -418,7 +419,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
 
             int rowIndex = 0;
 
-            if (!IntegrityChecker.isOfficial() && !(factory instanceof OfflineAccountFactory)) {
+            if (!IntegrityChecker.isOfficial() && HMCLAddon.SHOW_ACCOUNT_WARNING && !(factory instanceof OfflineAccountFactory)) {
                 HintPane hintPane = new HintPane(MessageDialogPane.MessageType.WARNING);
                 hintPane.setSegment(i18n("unofficial.hint"));
                 GridPane.setColumnSpan(hintPane, 2);
@@ -484,7 +485,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                     Controllers.dialog(new AddAuthlibInjectorServerPane());
                 });
 
-                HBox boxServers = new HBox(cboServers, linksContainer, btnAddServer);
+                HBox boxServers = new HBox(cboServers, linksContainer/*, btnAddServer*/);
                 add(boxServers, 1, rowIndex);
 
                 rowIndex++;

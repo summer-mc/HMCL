@@ -20,6 +20,7 @@ package org.jackhuang.hmcl;
 import org.jackhuang.hmcl.util.StringUtils;
 import org.jackhuang.hmcl.util.io.JarUtils;
 import org.jackhuang.hmcl.util.platform.OperatingSystem;
+import summerworks.launcher.hmcl.HMCLAddon;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,28 +45,14 @@ public final class Metadata {
     public static final String PUBLISH_URL = "https://www.mcbbs.net/thread-142335-1-1.html";
     public static final String EULA_URL = "https://docs.hmcl.net/eula/hmcl.html";
 
-    public static final String BUILD_CHANNEL = JarUtils.getManifestAttribute("Build-Channel", "nightly");
-    public static final String GITHUB_SHA = JarUtils.getManifestAttribute("GitHub-SHA", null);
+    public static final String BUILD_CHANNEL = "unofficial";
+    public static final String GITHUB_SHA = null;
 
     public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
     public static final Path HMCL_DIRECTORY;
 
     static {
-        String hmclHome = System.getProperty("hmcl.home");
-        if (hmclHome == null) {
-            if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX) {
-                String xdgData = System.getenv("XDG_DATA_HOME");
-                if (StringUtils.isNotBlank(xdgData)) {
-                    HMCL_DIRECTORY = Paths.get(xdgData, "hmcl").toAbsolutePath();
-                } else {
-                    HMCL_DIRECTORY = Paths.get(System.getProperty("user.home", "."), ".local", "share", "hmcl").toAbsolutePath();
-                }
-            } else {
-                HMCL_DIRECTORY = OperatingSystem.getWorkingDirectory("hmcl");
-            }
-        } else {
-            HMCL_DIRECTORY = Paths.get(hmclHome).toAbsolutePath().normalize();
-        }
+        HMCL_DIRECTORY = HMCLAddon.LOCAL_DIRECTORY;
     }
 
     public static boolean isStable() {
