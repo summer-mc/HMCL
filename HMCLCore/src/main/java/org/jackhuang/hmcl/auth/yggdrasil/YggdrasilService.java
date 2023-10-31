@@ -80,8 +80,8 @@ public class YggdrasilService {
 
         Map<String, Object> request = new HashMap<>();
         request.put("agent", mapOf(
-                pair("name", "Minecraft"),
-                pair("version", 1)
+                pair("name", "Nide8"),
+                pair("version", 233)
         ));
         request.put("username", username);
         request.put("password", password);

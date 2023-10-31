@@ -149,7 +149,7 @@ public class AccountListPage extends DecoratorAnimatedPage implements DecoratorP
                         }
                         item.subtitleProperty().set(host);
                         Tooltip tooltip = new Tooltip();
-                        tooltip.textProperty().bind(Bindings.format("%s (%s)", title, server.getUrl()));
+                        tooltip.textProperty().bind(Bindings.format("%s", title));
                         FXUtils.installFastTooltip(item, tooltip);
 
                         return item;

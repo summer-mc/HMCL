@@ -8,32 +8,26 @@ import org.jackhuang.hmcl.util.Logging;
 
 import java.io.CharArrayReader;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
-import java.net.URLConnection;
 import java.nio.file.Path;
-import java.util.Base64;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Level;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class HMCLAddon {
 
     public static final boolean SHOW_CUSTOM_ANNOUNCEMNTS;
     public static final boolean SHOW_ACCOUNT_WARNING;
     public static final Path LOCAL_DIRECTORY;
-    public static Image CUSTOM_BG_IMAGE = null;
+    public static Image CUSTOM_BG_IMAGE;
 
     public static String CUSTOM_ANNOUNCEMENTS_TITLE;
     public static String CUSTOM_ANNOUNCEMENTS_TEXT;
     public static String CUSTOM_HELP_LINK;
 
-    private static String NIDE8_AUTH_URL = "https://auth.mc-user.com:233/";
-    private static String NIDE8_SERVER_URL = "https://login.mc-user.com:233/";
-    private static String NIDE8_REGISTER_URL = "https://login.mc-user.com:233/";
+    private static String NIDE8_AUTH_URL = "https://auth.mc-user.com:233/{serverId}/";
+    private static String NIDE8_AUTH_BASEURL = "https://auth.mc-user.com:233/";
+    private static String NIDE8_SERVER_URL = "https://login.mc-user.com:233/{serverId}/";
+    private static String NIDE8_REGISTER_URL = "https://login.mc-user.com:233/{serverId}/loginreg";
     private static String NIDE8_SERVER_JAR_URL = NIDE8_SERVER_URL + "index/jar";
 
     static {
@@ -69,8 +63,10 @@ public class HMCLAddon {
             NIDE8_AUTH_URL = props.getProperty("auth.nide8.links.auth", NIDE8_AUTH_URL);
             NIDE8_SERVER_URL = props.getProperty("auth.nide8.links.server", NIDE8_SERVER_URL);
             NIDE8_REGISTER_URL = props.getProperty("auth.nide8.links.register", NIDE8_REGISTER_URL);
-            NIDE8_SERVER_JAR_URL = NIDE8_SERVER_URL + "index/jar";
+            NIDE8_SERVER_JAR_URL = NIDE8_SERVER_URL.replaceAll("\\{serverId}/", "") + "index/jar";
             NIDE8_SERVER_JAR_URL = props.getProperty("auth.nide8.links.jar", NIDE8_SERVER_JAR_URL);
+
+            NIDE8_AUTH_BASEURL = NIDE8_AUTH_URL.replaceAll("\\{serverId}/", "");
 
             checkNide8AuthJar();
         } catch (Exception e) {
@@ -95,7 +91,7 @@ public class HMCLAddon {
         }
 
         checkNide8AuthJar();
-        return  true;
+        return true;
     }
 
     public static Arguments getNide8AuthArgs(String url) {
@@ -106,11 +102,20 @@ public class HMCLAddon {
                 "-Dnide8auth.client=true");
     }
 
+    public static Map<String, String> getNide8Links(String url) {
+        String serverId = getNide8ServerId(url);
+        Map<String, String> links = new HashMap<>();
+        links.put("auth", NIDE8_AUTH_URL.replaceAll("\\{serverId}", serverId));
+        links.put("homepage", NIDE8_SERVER_URL.replaceAll("\\{serverId}", serverId));
+        links.put("register", NIDE8_REGISTER_URL.replaceAll("\\{serverId}", serverId));
+        return links;
+    }
+
     private static String getNide8ServerId(String url)
     {
-        if (!url.startsWith(NIDE8_AUTH_URL))
+        if (!url.startsWith(NIDE8_AUTH_BASEURL))
             return "";
-        return url.substring(NIDE8_AUTH_URL.length(), url.endsWith("/") ? url.length() - 1 : url.length());
+        return url.substring(NIDE8_AUTH_BASEURL.length(), url.endsWith("/") ? url.length() - 1 : url.length());
     }
 
     private static void checkNide8AuthJar()

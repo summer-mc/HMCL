@@ -380,7 +380,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                 return emptyList();
             }
 
-            Map<String, String> links = server.getLinks();
+            Map<String, String> links = HMCLAddon.isNide8AuthServer(server.getUrl()) ? HMCLAddon.getNide8Links(server.getUrl()) : server.getLinks();
             List<Hyperlink> result = new ArrayList<>();
             for (String key : ALLOWED_LINKS) {
                 String value = links.get(key);
@@ -476,7 +476,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                     this.server = server;
 
                     if (HMCLAddon.isNide8AuthServer(server.getUrl())) {
-                        
+                        linksContainer.getChildren().setAll(createHyperlinks(server));
                     } else {
                         linksContainer.getChildren().setAll(createHyperlinks(server));
                     }

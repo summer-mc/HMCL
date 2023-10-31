@@ -51,6 +51,7 @@ import com.google.gson.annotations.JsonAdapter;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import summerworks.launcher.hmcl.hmcl.HMCLAddon;
 
 @JsonAdapter(AuthlibInjectorServer.Deserializer.class)
 public class AuthlibInjectorServer implements Observable {
@@ -148,7 +149,7 @@ public class AuthlibInjectorServer implements Observable {
     }
 
     public boolean isNonEmailLogin() {
-        return nonEmailLogin;
+        return HMCLAddon.isNide8AuthServer(getUrl()) || nonEmailLogin;
     }
 
     public String fetchMetadataResponse() throws IOException {
